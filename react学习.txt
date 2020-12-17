@@ -1,0 +1,127 @@
+React基于组件（component）开发，然后组件和组件之间通过props传递方法，每个组件都有一个状态（state），当某个方法改变
+了这个状态值时，整个组件就会重绘，从而达到刷新。
+
+重绘就要提到虚拟dom了，就是用js模拟dom结构，等整个组件的dom更新完毕，才渲染到页面，简单来说只更新了相比之前改变了的
+部分，而不是全部刷新，所以效率很高。
+
+虚拟DOM（Virtual DOM）的机制：在浏览器端用Javascript实现了一套DOM API。
+
+react本身是单项数据流，但可以在react项目中通过很多操作(比如setState)实现双向数据绑定。
+单向数据流是指数据的流向只能由父组件通过props将数据传递给子组件，不能由子组件向父组件传递数据，要想实现数据的双向绑定，只能
+由子组件接收父组件props传过来的方法去改变父组件的数据，而不是直接将子组件的数据传递给父组件。
+
+ReactDOM.render 是 React 的最基本方法，用于将模板转为 HTML 语言，并插入指定的 DOM 节点。 
+
+HTML 语言直接写在 JavaScript 语言之中，不加任何引号，这就是 JSX 的语法，它允许 HTML 与 JavaScript 的混写
+
+React.createClass 方法就用于生成一个组件类。所有组件类都必须有自己的 render 方法，用于输出组件。（组件类的第一个字母必须大写）
+
+this.props.children ，它表示组件的所有子节点。它的的值有三种可能：如果当前组件没有子节点，它就是 undefined ;如果有一个子节点，数据类型是 object ；
+如果有多个子节点，数据类型就是 array 。
+
+组件类的PropTypes属性，就是用来验证组件实例的属性是否符合要求。
+
+组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM），
+根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 DOM diff。
+ref 属性，this.refs.[refName] 就会返回这个真实的 DOM 节点。 
+
+this.props 表示那些一旦定义，就不再改变的特性，而 this.state 是会随着用户互动而产生变化的特性。 
+
+组件的生命周期：
+学习地址链接：https://blog.csdn.net/tengxy_cloud/article/details/52909361
+https://blog.csdn.net/a1943206465/article/details/60570567
+Mounting：已插入真实 DOM；
+Updating：正在被重新渲染；
+Unmounting：已移出真实 DOM。 
+componentWillReceiveProps(object nextProps)//已加载组件收到新的参数时调用 
+shouldComponentUpdate(object nextProps, object nextState)//组件判断是否重新渲染时调用。
+
+生命周期详细解析：
+首先是初始化过程，组件类声明 调getDefaultProps方法（此方法只调用一次）该方法默认返回props  全局实例共享；
+组件实例化之前  会调用getInitialState方法 获取该组件初始state；
+实例化之后渲染之前  会调用componentWillMount方法（即生成虚拟DOM之前被调用）；
+渲染方法 render;
+render方法需要满足这几点：
+1.只能通过 this.props 或 this.state 访问数据
+2.只能出现一个顶级组件
+3.可以返回 null、false 或任何 React 组件
+4.不能对 props、state 或 DOM 进行修改
+需要注意的是，render 方法返回的是虚拟DOM。
+渲染完成以后  调用componentDidMount() 方法  也可以在这个方法里通过 this.getDOMNode() 方法取得最终生成DOM节点；
+
+其次组件实例化后使用setProps() 方法修改组件的数据时  可以在 componentWillReceiveProps() 方法中进行对外部传入的数据进行一些预处理；
+判断组件是否更新shouldComponentUpdate()；
+组件在更新前React会执行componentWillUpdate() 方法  不可以在这个方法中修改props或state  如果要修改  应当在 componentWillReceiveProps() 中修改;
+然后是渲染  React会拿这次返回的虚拟DOM和缓存中的虚拟DOM进行对比  找出【最小修改点】  然后替换；
+更新完成后  React会调用组件的componentDidUpdate 方法；
+
+最后销毁前调用componentWillUnmount方法  在这个方法中销毁非React组件注册的事件、插入的节点，或者一些定时器之类。
+ 
+<script type="text/babel">
+      // ** Our code goes here! **
+    </script>
+在HTML中引入jsx语法，<script> 标签的 type 属性为 text/babel 。这是因为 React 独有的 JSX 语法，跟 JavaScript 不兼容。凡是使用 JSX 的地方，
+都要加上 type="text/babel" 。
+
+库： react.js 、react-dom.js 和 Browser.js ，它们必须首先加载。其中，react.js 是 React 的核心库，react-dom.js 是提
+供与 DOM 相关的功能，Browser.js 的作用是将 JSX 语法转为 JavaScript 语法，这一步很消耗时间，实际上线的时候，应该将
+它放到服务器完成。 
+
+创建组件的方式：
+学习地址链接：https://www.cnblogs.com/mrfront/archive/2017/01/11/6275155.html
+1.ES5-写法 React.createClass
+2.ES6-写法 React.Component
+3.无状态的函数式写法
+import
+与这里使用了 ES6 的import语句替代require()方法导入模块，其中import {render}可以直接从模块中导入变量名，这种写法更加简洁直观。
+初始化 state
+React 使用 ES6 的“类”继承实现时，去掉了getInitialState这个 hook 函数，state的初始化放在构造函数方法constructor中声明。
+this 绑定
+React.Component创建组件时，事件函数并不会自动绑定this，需要我们手动绑定，不然this将不会指向当前组件的实例对象。
+以下两种方法针对React.createClass创建组件使用的方法：
+getDefaultProps 方法可以用来设置组件属性的默认值。
+getInitialState方法可以用来设置组件state的默认值。 
+class App extends React.Component使用constructor构造函数创建：
+constructor(props) {
+      super(props)
+      this.state = {
+        open: this.props.open
+      }
+   }
+
+原文：https://blog.csdn.net/xutongbao/article/details/82978831 
+props和state的区别：
+state 的主要作用是用于组件保存、控制、修改自己的可变状态。
+props 的主要作用是让使用该组件的父组件可以传入参数来配置该组件。
+它们的职责其实非常明晰分明：state 是让组件控制自己的状态，props 是让外部对组件自己进行配置。
+
+props 是在组件内不可变的（1.React的数据流是自上而下的；2.组件内部的this.props属性是只读的不可修改。）； state 可以根据与用户交互来改变
+（通过setState来改变，从而达到更新组件内部数据的作用。）。
+
+没有 state 的组件叫无状态组件（stateless component），设置了 state 的叫做有状态组件（stateful component）。因为状态会带来管理的复杂性，
+我们尽量多地写无状态组件，尽量少地写有状态的组件。这样会降低代码维护的难度，也会在一定程度上增强组件的可复用性。
+所以尽量少地用 state，尽量多地用 props。
+
+子组件如何向父组件传值：
+       react中state改变了，组件才会update。父写好state和处理该state的函数，同时将函数名通过props属性值的形式传入子，子调用父的
+函数，同时引起state变化。
+
+setState({}) setstate((state)=>{}) 区别：
+setState不是一个同步方法，而是一个异步方法,它会批量推迟更新；
+state={num:1};this.setState({num:this.state.num+1});this.setState({num:this.state.num+1}，function(){console.log(num)})输出num为2
+setstate((state)=>{}) 同样是批量推迟更新,但是(state)=>{}里的state是取的当前的状态
+state={num:1};this.setState((state)=>{return {num:state.num+1}});this.setState((state)=>{return {num:state.num+1}},function(){console.log(num)})输出num为3
+
+https://segmentfault.com/a/1190000018914249
+React diff原理
+三条diff策略：
+Web UI中DOM节点跨层级的移动操作特别少，可以忽略不计。（tree diff）
+
+拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构。（component diff）
+如果是同一类型的组件，按照原策略继续比较 Virtual DOM 树即可。如果不是，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点。
+对于同一类型的组件，有可能其 Virtual DOM 没有任何变化，如果能够确切知道这点，那么就可以节省大量的 diff 运算时间。因此，React允许用户通过
+shouldComponentUpdate()来判断该组件是否需要进行diff算法分析，但是如果调用了forceUpdate方法，shouldComponentUpdate则失效。
+
+对于同一层级的一组子节点，它们可以通过唯一 id 进行区分。（element diff）（对于简单列表页渲染来说，不加key要比加了key的性能更好）
+当节点处于同一层级时，diff 提供了 3 种节点操作，分别为 INSERT_MARKUP (插入)、MOVE_EXISTING (移动)和 REMOVE_NODE (删除)
+

@@ -1,0 +1,91 @@
+Object.keys()对对象和字符串的使用示例：
+Object.keys()，该方法返回一个数组
+var obj = {'a':'123','b':'345'};
+console.log(Object.keys(obj));  //['a','b']
+var str = 'ab1234';
+console.log(Object.keys(obj));  //[0,1,2,3,4,5]
+
+Object.assign()方法
+特点：浅拷贝、对象属性的合并
+var nObj = Object.assign({},obj,obj1);//花括号叫目标对象，后面的obj、obj1是源对象。对象合并是指：将源对象里面的属性
+添加到目标对象中去，若两者的属性名有冲突，后面的将会覆盖前面的
+
+https://www.jianshu.com/p/2f66a7429196
+js对象的深浅拷贝辨析:
+基本类型：undefined,null,布尔值(boolean),字符串(string),数值(number)。（这里补充一下，很多人认为null也是引用类型,因为
+ typeof null === 'object',之所以会这样可能是js语言设计的缺陷，与底层的二进制判断有关。其实null是基本类型的变量，null不
+指向任何变量，它是一个常量，所以说是基本类型。引用类型的变量其实也是基本类型，而引用指向的对象本身才是引用类型。）
+引用类型: 统称为Object类型，细分的话，有：Object类型，Array类型，Date类型，Function类型等。
+
+https://www.jb51.net/article/43032.htm
+JavaScript中判断对象类型的几种方法总结：
+1. typeof 运算符 typeof 是一元运算符，返回结果是一个说明运算数类型的字符串。如："number"，"string"，"boolean"，"object"，
+"function"，"undefined"（可用于判断变量是否存在）。（Array、Date、RegExp类型返回的都是"object"）
+2. instanceof 运算符。 instanceof 运算符要求其左边的运算数是一个对象，右边的运算数是对象类的名字或构造函数。(如果 object 不
+是指定类或函数的实例，或者 object 为 null，则返回 false)
+3. constructor 属性。 JavaScript中，每个对象都有一个constructor属性，它引用了初始化该对象的构造函数，常用于判断未知对象的类型。
+https://www.cnblogs.com/rusr/p/8984604.html
+4. Object.prototype.toString.call(obj)，  值为'[object Object]'这种类型
+
+
+ javaScript遍历对象：
+1.使用Object.keys()遍历 
+var obj = {'0':'a','1':'b','2':'c'};
+Object.keys(obj).forEach(function(key){
+     console.log(key,obj[key]);
+});
+2.使用for..in..遍历
+var obj = {'0':'a','1':'b','2':'c'};
+for(var i in obj) {
+     console.log(i,":",obj[i]);
+}
+
+javaScript遍历数组：
+1.使用forEach遍历
+var arr=[1,2,3,4];
+arr.forEach(function(val, index) {
+console.log(val, index);
+});
+2.使用for..in..遍历
+var arr=["张三","李四","王五","赵六"];
+for (var i in arr){
+console.log(i,":",arr[i]);
+}
+3.使用for-of遍历   不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象.也支持字符串遍历，它
+将字符串视为一系列的Unicode字符来进行遍历.
+var arr=["张三","李四","王五","赵六"];
+for (var value of arr){
+    console.log(value);
+}
+
+array.fiter(function(item,index,self){
+return 条件      //返回满足条件的一个新的数组
+})；该回调函数接受三个参数: 
+1.表示array的某个元素。
+2.表示array每一位的下标
+3.表示array自身 常用 self表示 
+
+array.map(callback(currentValue,index,arr));
+map() 方法按照原始数组元素顺序依次处理元素。
+注意： map() 不会对空数组进行检测；map() 不会改变原始数组。
+
+split() 把一个字符串分割成字符串数组
+
+join() 把一个数组分割成字符串
+
+trim()是去除字符串两边的空白;
+
+Array.splice(index,len,[item]) 注释：该方法会改变原始数组。splice有3个参数，它也可以用来替换/删除/添加数组内某一个或者几个值
+arr.splice(1,1); 删除下标为1的值
+arr.splice(1,1,'ttt'); 替换下标为1的值
+arr.splice(1,0,'ttt'); 添加 ---- len设置为0，item为添加的值
+
+apply()：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.apply(A, arguments);即A对象应用
+B对象的方法。(传参为数组形式)
+
+call()：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2);即A对象调用B对
+象的方法。（参数分开传）
+
+Math.max() 可以实现得到数组中最大的一项：但是它支持Math.max(param1,param2...)传参形式。所以可以
+根据apply的特点来解决 var max=Math.max.apply(null,array)
+

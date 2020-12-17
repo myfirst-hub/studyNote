@@ -1,0 +1,38 @@
+Git是分布式版本控制系统，CVS和SVN是集中式的版本控制系统。
+
+git log命令显示从最近到最远的提交日志，如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数（精简版日志）
+
+git reflog用来记录你的每一次命令
+
+git reset命令回退版本   --hard commit_id指定版本，上一个版本就是--hard HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数
+不过来，所以写成HEAD~100
+
+Untracked状态表示修改的文件未曾添加过。git add
+
+git add命令实际上就是把要提交的所有修改放到暂存区（Stage），git commit就可以一次性把暂存区的所有修改提交到分支。
+
+git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别
+
+git checkout -- file可以丢弃工作区的修改
+
+.>文件名  ： 创建文件命令。
+
+ git clone git@github.com:michaelliao/gitskills.git（:后面表示：github用户名/仓库名）
+
+HEAD指向的就是当前分支。
+
+创建+切换分支：git checkout命令加上-b   相当于  git branch dev   git checkout dev
+
+git merge命令用于合并指定分支到当前分支。
+
+git branch -d <name>删除分支	
+
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
+
+
+
+	 	
+
+
+

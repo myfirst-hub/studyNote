@@ -1,0 +1,59 @@
+Router组件本身只是一个容器，真正的路由要通过Route组件定义。
+
+Route组件定义了URL路径与组件的对应关系。
+Route组件的path属性指定路由的匹配规则。
+path属性也可以使用相对路径（不以/开头），匹配时就会相对于父组件的路径
+（1）:paramName
+:paramName匹配URL的一个部分，直到遇到下一个/、?、#为止。这个路径参数可以通过this.props.params.paramName取出。
+（2）()
+()表示URL的这个部分是可选的。
+（3）*
+*匹配任意字符，直到模式里面的下一个字符为止。匹配方式是非贪婪模式。
+（4） **
+** 匹配任意字符，直到下一个/、?、#为止。匹配方式是贪婪模式。
+路由匹配规则是从上到下执行，一旦发现匹配，就不再其余的路由匹配了。
+
+IndexRoute 组件：即指定默认情况下加载的子组件。
+注意，IndexRoute组件没有路径参数path。
+
+<Redirect>组件用于路由的跳转，即用户访问一个路由，会自动跳转到另一个路由。
+
+IndexRedirect组件用于访问根路由的时候，将用户重定向到某个子组件。
+
+Link组件用于取代<a>元素，生成一个链接，允许用户点击后跳转到另一个路由。
+
+Router组件的history属性，一共可以设置三种值：
+browserHistory：显示正常的路径example.com/some/path，背后调用的是浏览器的History API。这种情况需要对服务器改造。否则用户直接向服务器请求某个子路由，
+会显示网页找不到的404错误。如果开发服务器使用的是webpack-dev-server，加上--history-api-fallback参数就可以了。
+hashHistory：路由将通过URL（例example.com/#/some/path）的hash部分（#）切换，URL的形式类似example.com/#/some/path。
+createMemoryHistory：createMemoryHistory主要用于服务器渲染。它创建一个内存中的history对象，不与浏览器URL互动。
+
+const App = React.createClass({
+  render() {
+    return (
+      <div>
+        <footer>
+        	<Link to="/home">外卖</Link>
+        	<Link to={{pathname:'user',query:{ qhfrom : "home"}, hash:'#user',}}>我的</Link>
+        </footer>
+        {this.props.children}
+      </div>
+    )
+  }
+})
+render((
+  <Router>
+    <Route path="/" component={App}>
+      <IndexRoute component={Dashboard} />
+      <Route path="about" component={About} />
+      <Route path="inbox" component={Inbox}>
+        <Route path="/messages/:id" component={Message} />
+        {/* 跳转 /inbox/messages/:id 到 /messages/:id */}
+        <Redirect from="messages/:id" to="/messages/:id" />
+      </Route>
+    </Route>
+  </Router>
+), document.body)
+
+
+

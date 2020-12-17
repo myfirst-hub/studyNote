@@ -1,0 +1,29 @@
+View
+作为创建UI时最基础的组件，View是一个支持Flexbox布局、样式、一些触摸处理、和一些无障碍功能的容器，并且它可以放到其
+它的视图里，也可以有任意多个任意类型的子视图。
+
+React Native的目的 是希望我们能够使用前端的技术栈就可以创建出能够在不同平台运行的一个框架。
+
+React Js的目的 是为了使前端的V层更具组件化，能更好的复用，它能够使用简单的html标签创建更多的自定义组件标签，内部绑
+定事件，同时可以让你从操作dom中解脱出来，只需要操作数据就会改变相应的dom。 
+
+ReactJs和React Native的原理是相同的，都是由js实现的虚拟dom来驱动界面view层渲染。只不过ReactJs是驱动html dom渲染；
+React Native是驱动android/ios原生组件渲染。
+
+React Native比起标准Web开发或原生开发能够带来的三大好处： 
+1、手势识别：基于Web技术（HTML5/JavaScript）构建的移动应用经常被抱怨缺乏及时响应。而基于原生UI的React Native能避免
+这些问题从而实现实时响应。 
+2、原生组件：使用HTML5/JavaScript实现的组件比起原生组件总是让人感觉差一截，而React Native由于采用了原生UI组件自然
+没有此问题。 
+3、样式和布局：iOS、Android和基于Web的应用各自有不同的样式和布局机制。React Native通过一个基于FlexBox的布局引擎在
+所有移动平台上实现了一致的跨平台样式和布局方案。
+
+nodejs是js运行时，运行环境，类比java中jvm。只要安装对应版本的nodejs，那你就可以用js来开发后台程序。
+
+Express. js是基于nodejs的mvc框架。
+
+js中的模块化，还有很多规范，比如commonjs，amd，cmd(commonjs，seajs，requirejs)。其实简单的来说，就是commonjs是运行在nodejs端，amd，cmd是运行在
+浏览器。
+
+
+

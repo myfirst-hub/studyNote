@@ -1,0 +1,9 @@
+高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
+具体而言，高阶组件是参数为组件，返回值为新组件的函数。
+组件是将 props 转换为 UI，而高阶组件是将组件转换为另一个组件。
+
+react-redux 中的Connect：
+1、connect是一个函数，会返回一个connect的类，里面包着我们要渲染的wrappedComponent,然后将stateProps,dispatchProps,还有ownProps合并起来，
+一起传给wrappedComponent
+2、connect其实帮我们做了性能的优化的，当state跟props发生改变时，selector如果变化，最终计算出来的结果会进行一次浅比较来设置
+shouldComponentUpdate防止重复渲染

@@ -1,0 +1,56 @@
+$(document).ready() 方法允许我们在文档完全加载完后执行函数。
+
+选择器
+元素  id  class 
+
+事件
+鼠标事件		键盘事件		表单事件		文档/窗口事件
+click		keypress		submit 		load
+dblclick	   	keydown		change		resize
+mouseenter	keyup		focus		scroll
+mouseleave	 		blur		unload
+hover
+
+效果
+hide() 和 show()
+fadeIn() 用于淡入已隐藏的元素。
+fadeOut() 方法用于淡出可见元素。
+fadeToggle() 方法可以在 fadeIn() 与 fadeOut() 方法之间进行切换。
+fadeTo() 方法允许渐变为给定的不透明度（值介于 0 与 1 之间）。
+slideDown() 方法用于向下滑动元素。
+slideUp() 方法用于向上滑动元素
+slideToggle() 方法可以在 slideDown() 与 slideUp() 方法之间进行切换。
+
+
+HTML
+添加元素
+append() - 在被选元素的内部结尾插入内容
+prepend() - 在被选元素的内部开头插入内容
+after() - 在被选元素之后的外部插入内容
+before() - 在被选元素之前的外部插入内容
+删除元素
+remove() - 删除被选元素（及其子元素）
+empty() - 从被选元素中删除子元素
+
+操作css类
+addClass() - 向被选元素添加一个或多个类
+removeClass() - 从被选元素删除一个或多个类
+toggleClass() - 对被选元素进行添加/删除类的切换操作
+css() - 设置或返回样式属性
+
+遍历
+parent() 方法返回被选元素的直接父元素。
+parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)
+parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素。
+children() 方法返回被选元素的所有直接子元素。
+find() 方法返回被选元素的后代元素，一路向下直到最后一个后代。
+siblings() 方法返回被选元素的所有同胞元素。
+next() 方法返回被选元素的下一个同胞元素。
+nextAll() 方法返回被选元素的所有跟随的同胞元素。
+nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素
+prev(), prevAll() 以及 prevUntil() 方法的工作方式与上面的方法类似，只不过方向相反而已
+
+Ajax
+
+noConflict() 方法会释放对 $ 标识符的控制，这样其他脚本就可以使用它了。
+

@@ -1,0 +1,25 @@
+学习地址链接：http://www.jb51.net/article/43106.htm
+
+url传值：把要传递的信息接在URL上。
+location.href=url;（location的属性）
+window.location.assign(url) ： 加载 URL 指定的新的 HTML 文档。 就相当于一个链接，跳转到指定的url，当前页面会转为新
+页面内容，可以点击后退返回上一个页面。（location的方法）
+window.location.replace(url) ： 通过加载 URL 指定的文档来替换当前文档 ，这个方法是替换当前窗口页面，前后两个页面共
+用一个窗口，所以是没有后退返回上一页的。（location的方法）
+url获取参数：
+location对象 含有当前URL的信息. 属性 href 整个URL字符串.
+protocol 含有URL第一部分的字符串,如http:
+host 包含有URL中主机名:端口号部分的字符串.如//www.cenpok.net/server/
+hostname 包含URL中主机名的字符串.如http://www.cenpok.net ;
+port 包含URL中可能存在的端口号字符串.
+pathname URL中"/"以后的部分.如~list/index.htm
+hash "#"号(CGI参数)之后的字符串.
+search "?"号(CGI参数)之后的字符串.
+优点:取值方便.可以跨域.
+缺点:值长度有限制
+
+cookie传值：
+document.cookie方法存值和取值
+优点:可以在同源内的任意网页内访问.生命期可以设置.
+缺点:值长度有限制.
+

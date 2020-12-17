@@ -1,0 +1,44 @@
+每个元素都有一个默认的 display 值，一个 block 元素通常被叫做块级元素。一个 inline 元素通常被叫做行内元素。
+把 display 设置成 none 元素不会占据它本来应该显示的空间，但是设置成 visibility: hidden; 还会占据空间。
+
+盒模型
+	CSS设置属性box-sizing
+标准模型（属性值：content-box）  布局所占宽度=width + padding-left + padding-right + border-left + border-right；
+IE模型（属性值：border-box）  布局所占宽度=width（width包含了padding和border的长度）；
+JS获取盒模型的宽和高方法：
+dom.style.width/height；该方法只能获取行内属性
+dom.offsetWidth/offsetHeight;  window.getComputedStyle(dom).width/height; 可以获取写在样式文件里的属性值
+dom.currenStyle.width/height；该方法支支持IE浏览器
+
+BFC（边距重叠解决方案）概念 原理 
+
+溢出显示省略号
+实现方法：
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+
+line-height:1; 的意思是 根据该元素本身的字体大小 设置行高 比如该元素字体是15px line-height:1; 的行高就是15px;
+
+width、height中auto与100%与固定值有什么不同？
+(1)width、height使用固定值是一定会显示的，但是除非是小型项目或是特殊情况，最好不要使用固定值。不利于响应式开发，当从移动端看页面就会非常不美观。
+
+
+(2)不设置width、height时默认为auto，当position不同时显示效果不同，浮动可能会导致其不显示，需要清除浮动。
+(3)width、height强制将子元素充满父元素的content。
+auto与子元素有关，100%与父元素有关
+
+1.css添加下划线
+    text-decoration:underline /* underline下划线 */ 
+    text-decoration:line-through /* line-through删除线贯穿线 */ 
+    text-decoration:overline /* overline上划线 */ 
+2.<u></u>添加下划线
+
+li:nth-child(2){background:#090}   选取第2个li标签
+:nth-child(n+4)选取大于等于4标签
+:nth-child(-n+4)选取小于等于4标签
+:last-child选取最后一个标签
+:nth-child(2n-1)选取奇数标签，2n-1可以是odd
+:nth-child(2n)选取偶数标签，2n也可以是even
+
+border-style:   solid 表示直线   /    dashed  表示虚线

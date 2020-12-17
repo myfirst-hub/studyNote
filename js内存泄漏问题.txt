@@ -1,0 +1,42 @@
+https://www.cnblogs.com/carekee/articles/1733847.html
+1、给DOM对象添加的属性是一个对象的引用。范例：
+var MyObject = {};
+document.getElementById('myDiv').myProp = MyObject;
+解决方法：
+在window.onunload事件中写上: document.getElementById('myDiv').myProp = null;
+
+2、DOM对象与JS对象相互引用。范例：
+function Encapsulator(element) {
+this.elementReference = element;
+element.myProp = this;
+}
+new Encapsulator(document.getElementById('myDiv'));
+解决方法：
+在onunload事件中写上: document.getElementById('myDiv').myProp = null;
+
+3、给DOM对象用attachEvent绑定事件。范例：
+function doClick() {}
+element.attachEvent("onclick", doClick);
+解决方法：
+在onunload事件中写上: element.detachEvent('onclick', doClick);
+
+4、从外到内执行appendChild。这时即使调用removeChild也无法释放。范例：
+var parentDiv = document.createElement("div");
+var childDiv = document.createElement("div");
+document.body.appendChild(parentDiv);
+parentDiv.appendChild(childDiv);
+解决方法：
+从内到外执行appendChild:
+var parentDiv = document.createElement("div");
+var childDiv = document.createElement("div");
+parentDiv.appendChild(childDiv);
+document.body.appendChild(parentDiv);
+
+
+5、反复重写同一个属性会造成内存大量占用(但关闭IE后内存会被释放)。范例：
+for(i = 0; i < 5000; i++) {
+hostElement.text = "asdfasdfasdf";
+}
+这种方式相当于定义了5000个属性！
+解决方法：
+其实没什么解决方法:P~~~就是编程的时候尽量避免出现这种情况咯~~

@@ -1,0 +1,32 @@
+https://www.echartsjs.com/zh/tutorial.html
+echarts 实例：
+一个网页中可以创建多个 echarts 实例，每个 echarts 实例 中可以创建多个图表和坐标系等等（用 option 来描述）且独占一个 DOM 节点。
+
+系列（series）是指：一组数值以及他们映射成的图。（系列（series）也是一种组件，可以理解为：系列是专门绘制“图”的组件）
+系列类型（series.type）至少有：line（折线图）、bar（柱状图）、pie（饼图）、scatter（散点图）、graph（关系图）、tree（树图）
+
+echarts 中至少有这些组件：xAxis（直角坐标系 X 轴）、yAxis（直角坐标系 Y 轴）、grid（直角坐标系底板）、angleAxis（极坐标系角度轴）、
+radiusAxis（极坐标系半径轴）、polar（极坐标系底板）、geo（地理坐标系）、dataZoom（数据区缩放组件）、visualMap（视觉映射组件）、
+tooltip（提示框组件）、toolbox（工具栏组件）、series（系列）、图例组件 legend、标题组件 title、时间线组件 timeline
+
+异步数据加载时，myChart(实例).showLoading();  myChart(实例).hideLoading();   生成loading动画
+
+数据集（dataset）组件：
+基于数据（dataset 组件来提供数据），指定数据到视觉的映射（由 encode 属性来指定映射），形成图表。
+数据可以被多个系列或者组件复用，对于大数据，不必为每个系列创建一份。
+据和其他配置可以被分离开来，使用者相对便于进行单独管理，也省去了一些数据处理的步骤。
+支持更多的数据的常用格式，例如二维数组、对象数组等，一定程度上避免使用者为了数据格式而进行转换。
+
+移动端自适应：
+横纵向布局的设置，一般在『组件』或者『系列』的 orient 或者 layout 配置项上，设置为 'horizontal' 或者 'vertical'。
+Media Query 提供了『随着容器尺寸改变而改变』的能力。
+如果 media 中有某项不写 query，则表示『默认值』，即所有规则都不满足时，采纳这个option。
+
+visualMap 组件中可以使用的视觉元素有：
+图形类别（symbol）、图形大小（symbolSize）、颜色（color）、透明度（opacity）、颜色透明度（colorAlpha）、颜色明暗度（colorLightness）、
+颜色饱和度（colorSaturation）、色调（colorHue）
+
+
+
+
+

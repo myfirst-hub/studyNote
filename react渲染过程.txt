@@ -1,0 +1,10 @@
+react的首次渲染：
+JSX代码经过babel编译之后变成React.createElement的表达式，这个表达式在render函数被调用的时候执行生成一个element。
+在首次渲染的时候，先去按照规则初始化element，接着ReactComponentComponentWrapper通过递归，最终调用ReactDOMComponent的
+mountComponent方法来帮助生成真实DOM节点。
+
+react合成事件系统：
+其基本原理就是，所有在JSX声明的事件都会被委托在顶层document节点上，并根据事件名和组件名存储回调函数(listenerBank)。每次当某个组件触发事件时，
+在document节点上绑定的监听函数（dispatchEvent）就会找到这个组件和它的所有父组件(ancestors)，对每个组件创建对应React合成事件(SyntheticEvent)
+并批处理(runEventQueueInBatch(events))，从而根据事件名和组件名调用(invokeGuardedCallback)回调函数。
+

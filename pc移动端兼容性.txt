@@ -1,0 +1,32 @@
+IE    背景图片使用filter
+       事件监听机制：if(obj.attachEvent){
+        obj.attachEvent('on'+ev,fn);
+    }else{
+        obj.addEventListener(ev,fn,false);
+    }
+}
+创建XMLHttpRequest对象
+  var xmlHttpRequest;  //定义一个变量,用于存放XMLHttpRequest对象
+                                function createXMLHttpRequest()    //创建XMLHttpRequest对象的方法
+                               {
+                                         if(window.ActiveXObject)   //判断是否是IE浏览器
+                                        {
+                                                  xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");  //创建IE浏览器中的XMLHttpRequest对象
+                                        }
+                                        else if(window.XMLHttpRequest)    //判断是否是Netscape等其他支持XMLHttpRequest组件的浏览器
+                                        {
+                                       xmlHttpRequest = new XMLHttpRequest();  //创建其他浏览器上的XMLHttpRequest对象
+                                         } }
+移动端：ios   overflow滑动卡顿    加-webkit-overflow-scrolling: touch;，是因为这行代码启用了硬件加速特性，所以滑动很流畅
+             ios    iscroll    滑动区域无法添加click/tab点击事件  ：  初始化new Iscroll时，添加属性   click :true,tab:true,mousewheel:true
+             IOS 下 input[type=’tel’],input[type=’text’]输入框上边框显示有阴影问题
+	解决：input{
+　  		outline: none;
+    		-webkit-appearance: none; /*去除系统默认的样式*/
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 点击高亮的颜色*/
+	}
+            ios 对click有兼容性： 设置样式 cursor:pointer;
+            移动端input框 在手机页面中无法输入文字的问题
+	-moz-user-select: none;
+	-webkit-user-select: none;
+

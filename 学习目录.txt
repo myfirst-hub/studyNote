@@ -1,0 +1,34 @@
+node
+
+less
+
+es6 class
+
+webpack
+
+react
+
+redux
+
+route
+
+react native
+
+taro
+
+typescript
+
+vue技术栈
+
+
+
+工作中遇到的相关工具：
+xhsell，Xftp进行项目部署
+secureCRT进行日志查看和修改文件
+svn，git进行代码管理，码云进行git账号注册
+burpSuit抓包工具
+
+
+plupload， 大文件断点续传
+lodash,   一个一致性、模块化、高性能的 JavaScript 实用工具库
+iconfont,  阿里巴巴矢量图标库，svg的引用使用background：url()；    转成base64使用？

@@ -1,0 +1,75 @@
+学习地址链接：https://www.cnblogs.com/ygj0930/p/6126542.html 
+	      https://www.cnblogs.com/wanghp/p/6991554.html
+
+       Ajax指Asynchronous JavaScript and XML（异步的 JavaScript 和 XML），最大的优点是在不重新加载整个页面的情况下，
+可以与服务器交换数据并更新部分网页内容。而实现的原理基础就是：网页DOM对象可以精确地对网页中的部分内容进行操作、
+XML作为单纯的数据存储载体使得客户端与服务器交换的只是网页内容的数据而没有网页样式等等的附属信息、
+XMLHttpRequest是与浏览器本身内置的request相互独立的与服务器交互的请求对象。
+
+XMLHttpRequest对象的属性有：
+  　　onreadystatechange  每次状态改变所触发事件的事件处理程序。
+  　　responseText     从服务器进程返回数据的字符串形式。
+  　　responseXML    从服务器进程返回的DOM兼容的文档数据对象。
+  　　status           从服务器返回的数字代码，比如常见的404（未找到）和200（已就绪）
+  　　status Text       伴随状态码的字符串信息
+  　　readyState       对象状态值
+　　　　0 (未初始化) 对象已建立，但是尚未初始化（尚未调用open方法）
+　　　　1 (初始化) 对象已建立，尚未调用send方法
+　　　　2 (发送数据) send方法已调用，但是当前的状态及http头未知
+　　　　3 (数据传送中) 已接收部分数据，因为响应及http头不全，这时通过responseBody和responseText获取部分数据会出
+现错误，
+　　　　4 (完成) 数据接收完毕,此时可以通过通过responseXml和responseText获取完整的回应数据
+
+创建XMLHttpRequest对象的方法：
+function CreateXmlHttp() {
+    //非IE浏览器创建XmlHttpRequest对象
+    if (window.XmlHttpRequest) {
+        xmlhttp = new XmlHttpRequest();
+    }
+    //IE浏览器创建XmlHttpRequest对象
+    if (window.ActiveXObject) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e) {
+            try {
+                xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+            }
+            catch (ex) { }
+        }
+    }
+}
+function Ustbwuyi() {
+    var data = document.getElementById("username").value;
+    CreateXmlHttp();
+    if (!xmlhttp) {
+        alert("创建xmlhttp对象异常！");
+        return false;
+    }
+    xmlhttp.open("POST", url, false);
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            document.getElementById("user1").innerHTML = "数据正在加载...";
+            if (xmlhttp.status == 200) {
+                document.write(xmlhttp.responseText);
+            }
+        }
+    }
+    xmlhttp.send();
+}
+
+axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，本质上也是对原生XHR的封装，只不过它是Promise的实现版本，符合最新的ES规范：
+1.从浏览器中创建 XMLHttpRequest
+2.支持 Promise API
+3.客户端支持防止CSRF
+4.提供了一些并发请求的接口（重要，方便了很多的操作）
+5.从 node.js 创建 http 请求
+6.拦截请求和响应
+7.转换请求和响应数据
+8.取消请求
+9.自动转换JSON数据
+
+fetch 是全局量 window 的一个方法，它的主要特点有：
+1、第一个参数是URL:
+2、第二个是可选参数，可以控制不同配置的 init 对象
+3、使用了 JavaScript Promises 来处理结果/回调:

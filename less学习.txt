@@ -1,0 +1,96 @@
+LESSCSS是一种动态样式语言，属于CSS预处理语言的一种，它使用类似CSS的语法，为CSS的赋予了动态语言的特性，如变量、继承、
+运算、函数等，更方便CSS的编写和维护。
+
+CSS 预处理器的主要目标：提供 CSS 缺失的样式层复用机制、减少冗余代码，提高样式代码的可维护性。
+
+Less 转义：它动态构建选择器，并使用属性或变量值作为任意字符串。color: ~"green";编译后为 color: green;
+
+Less 嵌套：它是一组CSS属性，允许将一个类的属性用于另一个类，并且包含类名作为其属性。
+
+Less操作：Less支持一些算术运算，例如加号(+)，减号( - )，乘法(*)和除法(/)，它们可以对任何数字，颜色或变量进行操作。
+
+学习连接：https://www.jianshu.com/p/df9411f6d8ab
+Less 函数：LESS映射具有值操作的JavaScript代码，并使用预定义的函数来操纵样式表中的HTML元素。
+数学函数;
+floor函数	。 案例： floor(2.6)  输出： 2;
+ceil函数:向上取整。 案例： ceil(2.4)输出： 3;
+percentage：将浮点数转换为百分比字符串。案例： percentage(0.5)  输出： 50%。
+颜色定义函数：
+rgb：通过十进制红色、绿色、蓝色三种值 (RGB) 创建不透明的颜色对象。
+rgba：通过十进制红色、绿色、蓝色，以及 alpha 四种值 (RGBA) 创建带alpha透明的颜色对象。
+类型函数
+isnumber：如果待验证的值为数字则返回 true ，否则返回 false 。isnumber("string")； // false；isnumber(1234);     // true;isnumber(56px);     // true
+iscolor：如果待验证的值为颜色则返回 true ，否则返回 false 。iscolor(blue);     // true；iscolor("string"); // false；iscolor(1234);     // false
+isurl：如果待验证的值为 url 则返回 true ，否则返回 false 。isurl(7.8%);     // false ；isurl(keyword);  // false； isurl(url(...)); // true
+
+Less 变量范围：变量范围指定可用变量的位置。 变量将从本地作用域搜索，如果它们不可用，则编译器将从父作用域搜索。
+案例：
+@var: @a;
+@a: 15px;
+.myclass {
+  font-size: @var;
+  @a:20px;
+  color: green;
+}
+结果：
+.myclass {
+  font-size: 20px;
+  color: green;
+}
+
+Less 导入：它用于导入LESS或CSS文件的内容。（@import）
+案例 @import "//www.w3cschool.cn/less/myfile.less";
+
+Less 变量:Less 中声明变量的格式为“@变量名：变量值”；变量可以用于选择器名称，属性名称， URL 和 @import 语句。
+案例
+@variable: 200px; //定义变量作为样式属性值使用
+@classname: .nav_a; //变量值不可用中划线，此变量作为插值用于选择器名称
+
+@{classname}{ //作为插值 必须加 {}
+    width: @variable; //作为属性值直接调用
+}
+
+extend 扩展 :extend是一个伪类，使用它的选择器，将和它引用的选择器一起使用它引用的选择器的样式
+案例
+.a{
+    &:extend(.b);  //这里的 & 为 父选择符，代表的 父选择符 .a 扩展 .b
+    font-size: 12px;
+}
+.b{
+    font-weight: bold;
+}
+输出：
+.a {
+  font-size: 12px;
+}
+.b,
+.a {
+  font-weight: bold;  //这里 a 扩展也引用了 b 的样式
+}
+
+Less 父选择器：可以使用＆(和号)运算符来引用父选择器。
+Less 混合:混合类似于编程语言中的函数。 Mixins是一组CSS属性，允许您将一个类的属性用于另一个类，并且包含类名作为其
+属性。mixins可以嵌套，可以接受参数和返回值。
+案例
+.mixin() {
+  &:hover {
+    background: #FFC0CB;
+  }
+}
+a {
+  .mixin();
+}
+输出：
+.mixin() {
+  &:hover {
+    background: #FFC0CB;
+  }
+}
+a {
+  .mixin();
+}
+
+Less 导入指令:可以通过 @import 指令来导入外部文件。 
+
+Less Mixin Guards：使用Guards可以在表达式上匹配简单的值或参数数量，它与mixin声明相关联，并包括附加到mixin的条件。
+

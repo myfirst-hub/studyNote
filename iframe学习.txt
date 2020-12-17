@@ -1,0 +1,18 @@
+https://blog.csdn.net/zxw9202/article/details/47259629
+1. 父页面调用子页面方法：window.frames[“frame的名称(name)”].函数名()，或name.window.fn()，name为iframe的name
+2. 子页面调用父页面方法：window.parent.函数名()
+https://www.jianshu.com/p/24157aff6b54
+3. 跨域情况下就用Window.postMessage();
+
+
+https://www.cnblogs.com/Heaven1020/p/5366453.html
+iframe的优缺点：
+优点:
+1. 重载页面时不需要重载整个页面，只需要重载页面中的一个框架页(减少了数据的传输，加快了网页下载速度)
+
+缺点：
+1. 浏览器的后退按钮无效
+2. 代码复杂,无法被一些搜索引擎索引到（框架结构（帧结构）的不能为每个网页都设置一个标题（TITLE），更为糟糕的是，有些搜
+索引擎对框架结构的页面不能正确处理，会影响到搜索结果的排列名次）
+3. 多数小型的移动设备（PDA 手机）无法完全显示框架
+4. 多框架的页面会增加服务器的http请求

@@ -1,0 +1,50 @@
+学习地址链接：https://blog.csdn.net/saytime/article/details/51540876
+同源策略(Same-Origin Policy)
+所谓同源是指协议，域名，端口相同。
+
+JSONP（JSON with Padding）是JSON的一种”使用模式”，可用于解决主流浏览器的跨域数据访问的问题。
+
+用jsonp的原因是：
+json是javascript中的对象，而跨域访问中有图片、css、javascript脚本文件等是不限制，因此你可以在页面
+渲染时动态在<script>标签设置src路径，而这个路径返回回来的就是json对象。
+
+jsonp跨域加载且获取数据的代码示例：
+<script type="text/javascript">
+    function getResult(data){
+        alert(data.result);
+    }
+</script>
+<script type="text/javascript" src="http://localhost:8888/other/other.jsp?params=fromjsonp&callback=getResult">
+</script> 
+或动态创建《script》：
+<script type="text/javascript">
+    function getResult(data){
+        alert(data.result);
+    }
+var url="http://localhost:8888/other/other.jsp?params=fromjsonp&callback=getResult";
+var script = document.createElement('script');
+script.setAttribute('src', url);
+// 把script标签加入head，此时调用开始
+document.getElementsByTagName('head')[0].appendChild(script); 
+</script>
+如果是同一个js文件或者当前页面的js中，先执行调用，然后再写函数也是没有问题的，但是如果引入js文件，应先写函数，然后
+再执行调用。
+
+jQuery ajax对JSONP的封装：
+用jQuery ajax原理和上面的是一样的，只不过我们不需要手动的插入script标签以及定义回调函数。jquery会自动生成一个全局
+函数来替换callback=?中的问号，之后获取到数据后又会自动销毁，实际上就是起一个临时代理函数的作用。
+ $.ajax({
+                url: 'http://cgi.music.soso.com/fcgi-bin/fcg_search_xmldata.q?source=10&w='+keyword+'&perpage=5&ie=utf-8',
+                type: 'GET',
+                dataType: 'jsonp',
+                jsonp:'callback',
+                jsonpCallback: 'searchJsonCallback',
+                success:function(data){
+                    
+                }
+            });
+jsonp就是相当于一个名字，一个参数名
+jsonpCallback就是回调函数名，用来包裹JSON数据的
+然后将jsonpCallback定义的函数赋值给jsonp定义的参数上，
+最后拼接在url末尾完成参数传递。
+    
