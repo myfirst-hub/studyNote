@@ -1,44 +1,44 @@
-Ã¿¸öÔªËØ¶¼ÓĞÒ»¸öÄ¬ÈÏµÄ display Öµ£¬Ò»¸ö block ÔªËØÍ¨³£±»½Ğ×ö¿é¼¶ÔªËØ¡£Ò»¸ö inline ÔªËØÍ¨³£±»½Ğ×öĞĞÄÚÔªËØ¡£
-°Ñ display ÉèÖÃ³É none ÔªËØ²»»áÕ¼¾İËü±¾À´Ó¦¸ÃÏÔÊ¾µÄ¿Õ¼ä£¬µ«ÊÇÉèÖÃ³É visibility: hidden; »¹»áÕ¼¾İ¿Õ¼ä¡£
+æ¯ä¸ªå…ƒç´ éƒ½æœ‰ä¸€ä¸ªé»˜è®¤çš„ display å€¼ï¼Œä¸€ä¸ª block å…ƒç´ é€šå¸¸è¢«å«åšå—çº§å…ƒç´ ã€‚ä¸€ä¸ª inline å…ƒç´ é€šå¸¸è¢«å«åšè¡Œå†…å…ƒç´ ã€‚
+æŠŠ display è®¾ç½®æˆ none å…ƒç´ ä¸ä¼šå æ®å®ƒæœ¬æ¥åº”è¯¥æ˜¾ç¤ºçš„ç©ºé—´ï¼Œä½†æ˜¯è®¾ç½®æˆ visibility: hidden; è¿˜ä¼šå æ®ç©ºé—´ã€‚
 
-ºĞÄ£ĞÍ
-	CSSÉèÖÃÊôĞÔbox-sizing
-±ê×¼Ä£ĞÍ£¨ÊôĞÔÖµ£ºcontent-box£©  ²¼¾ÖËùÕ¼¿í¶È=width + padding-left + padding-right + border-left + border-right£»
-IEÄ£ĞÍ£¨ÊôĞÔÖµ£ºborder-box£©  ²¼¾ÖËùÕ¼¿í¶È=width£¨width°üº¬ÁËpaddingºÍborderµÄ³¤¶È£©£»
-JS»ñÈ¡ºĞÄ£ĞÍµÄ¿íºÍ¸ß·½·¨£º
-dom.style.width/height£»¸Ã·½·¨Ö»ÄÜ»ñÈ¡ĞĞÄÚÊôĞÔ
-dom.offsetWidth/offsetHeight;  window.getComputedStyle(dom).width/height; ¿ÉÒÔ»ñÈ¡Ğ´ÔÚÑùÊ½ÎÄ¼şÀïµÄÊôĞÔÖµ
-dom.currenStyle.width/height£»¸Ã·½·¨Ö§Ö§³ÖIEä¯ÀÀÆ÷
+ç›’æ¨¡å‹
+	CSSè®¾ç½®å±æ€§box-sizing
+æ ‡å‡†æ¨¡å‹ï¼ˆå±æ€§å€¼ï¼šcontent-boxï¼‰  å¸ƒå±€æ‰€å å®½åº¦=width + padding-left + padding-right + border-left + border-rightï¼›
+IEæ¨¡å‹ï¼ˆå±æ€§å€¼ï¼šborder-boxï¼‰  å¸ƒå±€æ‰€å å®½åº¦=widthï¼ˆwidthåŒ…å«äº†paddingå’Œborderçš„é•¿åº¦ï¼‰ï¼›
+JSè·å–ç›’æ¨¡å‹çš„å®½å’Œé«˜æ–¹æ³•ï¼š
+dom.style.width/heightï¼›è¯¥æ–¹æ³•åªèƒ½è·å–è¡Œå†…å±æ€§
+dom.offsetWidth/offsetHeight;  window.getComputedStyle(dom).width/height; å¯ä»¥è·å–å†™åœ¨æ ·å¼æ–‡ä»¶é‡Œçš„å±æ€§å€¼
+dom.currenStyle.width/heightï¼›è¯¥æ–¹æ³•æ”¯æ”¯æŒIEæµè§ˆå™¨
 
-BFC£¨±ß¾àÖØµş½â¾ö·½°¸£©¸ÅÄî Ô­Àí 
+BFCï¼ˆè¾¹è·é‡å è§£å†³æ–¹æ¡ˆï¼‰æ¦‚å¿µ åŸç† 
 
-Òç³öÏÔÊ¾Ê¡ÂÔºÅ
-ÊµÏÖ·½·¨£º
+æº¢å‡ºæ˜¾ç¤ºçœç•¥å·
+å®ç°æ–¹æ³•ï¼š
 overflow: hidden;
 text-overflow:ellipsis;
 white-space: nowrap;
 
-line-height:1; µÄÒâË¼ÊÇ ¸ù¾İ¸ÃÔªËØ±¾ÉíµÄ×ÖÌå´óĞ¡ ÉèÖÃĞĞ¸ß ±ÈÈç¸ÃÔªËØ×ÖÌåÊÇ15px line-height:1; µÄĞĞ¸ß¾ÍÊÇ15px;
+line-height:1; çš„æ„æ€æ˜¯ æ ¹æ®è¯¥å…ƒç´ æœ¬èº«çš„å­—ä½“å¤§å° è®¾ç½®è¡Œé«˜ æ¯”å¦‚è¯¥å…ƒç´ å­—ä½“æ˜¯15px line-height:1; çš„è¡Œé«˜å°±æ˜¯15px;
 
-width¡¢heightÖĞautoÓë100%Óë¹Ì¶¨ÖµÓĞÊ²Ã´²»Í¬£¿
-(1)width¡¢heightÊ¹ÓÃ¹Ì¶¨ÖµÊÇÒ»¶¨»áÏÔÊ¾µÄ£¬µ«ÊÇ³ı·ÇÊÇĞ¡ĞÍÏîÄ¿»òÊÇÌØÊâÇé¿ö£¬×îºÃ²»ÒªÊ¹ÓÃ¹Ì¶¨Öµ¡£²»ÀûÓÚÏìÓ¦Ê½¿ª·¢£¬µ±´ÓÒÆ¶¯¶Ë¿´Ò³Ãæ¾Í»á·Ç³£²»ÃÀ¹Û¡£
+widthã€heightä¸­autoä¸100%ä¸å›ºå®šå€¼æœ‰ä»€ä¹ˆä¸åŒï¼Ÿ
+(1)widthã€heightä½¿ç”¨å›ºå®šå€¼æ˜¯ä¸€å®šä¼šæ˜¾ç¤ºçš„ï¼Œä½†æ˜¯é™¤éæ˜¯å°å‹é¡¹ç›®æˆ–æ˜¯ç‰¹æ®Šæƒ…å†µï¼Œæœ€å¥½ä¸è¦ä½¿ç”¨å›ºå®šå€¼ã€‚ä¸åˆ©äºå“åº”å¼å¼€å‘ï¼Œå½“ä»ç§»åŠ¨ç«¯çœ‹é¡µé¢å°±ä¼šéå¸¸ä¸ç¾è§‚ã€‚
 
 
-(2)²»ÉèÖÃwidth¡¢heightÊ±Ä¬ÈÏÎªauto£¬µ±position²»Í¬Ê±ÏÔÊ¾Ğ§¹û²»Í¬£¬¸¡¶¯¿ÉÄÜ»áµ¼ÖÂÆä²»ÏÔÊ¾£¬ĞèÒªÇå³ı¸¡¶¯¡£
-(3)width¡¢heightÇ¿ÖÆ½«×ÓÔªËØ³äÂú¸¸ÔªËØµÄcontent¡£
-autoÓë×ÓÔªËØÓĞ¹Ø£¬100%Óë¸¸ÔªËØÓĞ¹Ø
+(2)ä¸è®¾ç½®widthã€heightæ—¶é»˜è®¤ä¸ºautoï¼Œå½“positionä¸åŒæ—¶æ˜¾ç¤ºæ•ˆæœä¸åŒï¼Œæµ®åŠ¨å¯èƒ½ä¼šå¯¼è‡´å…¶ä¸æ˜¾ç¤ºï¼Œéœ€è¦æ¸…é™¤æµ®åŠ¨ã€‚
+(3)widthã€heightå¼ºåˆ¶å°†å­å…ƒç´ å……æ»¡çˆ¶å…ƒç´ çš„contentã€‚
+autoä¸å­å…ƒç´ æœ‰å…³ï¼Œ100%ä¸çˆ¶å…ƒç´ æœ‰å…³
 
-1.cssÌí¼ÓÏÂ»®Ïß
-    text-decoration:underline /* underlineÏÂ»®Ïß */ 
-    text-decoration:line-through /* line-throughÉ¾³ıÏß¹á´©Ïß */ 
-    text-decoration:overline /* overlineÉÏ»®Ïß */ 
-2.<u></u>Ìí¼ÓÏÂ»®Ïß
+1.cssæ·»åŠ ä¸‹åˆ’çº¿
+    text-decoration:underline /* underlineä¸‹åˆ’çº¿ */ 
+    text-decoration:line-through /* line-throughåˆ é™¤çº¿è´¯ç©¿çº¿ */ 
+    text-decoration:overline /* overlineä¸Šåˆ’çº¿ */ 
+2.<u></u>æ·»åŠ ä¸‹åˆ’çº¿
 
-li:nth-child(2){background:#090}   Ñ¡È¡µÚ2¸öli±êÇ©
-:nth-child(n+4)Ñ¡È¡´óÓÚµÈÓÚ4±êÇ©
-:nth-child(-n+4)Ñ¡È¡Ğ¡ÓÚµÈÓÚ4±êÇ©
-:last-childÑ¡È¡×îºóÒ»¸ö±êÇ©
-:nth-child(2n-1)Ñ¡È¡ÆæÊı±êÇ©£¬2n-1¿ÉÒÔÊÇodd
-:nth-child(2n)Ñ¡È¡Å¼Êı±êÇ©£¬2nÒ²¿ÉÒÔÊÇeven
+li:nth-child(2){background:#090}   é€‰å–ç¬¬2ä¸ªliæ ‡ç­¾
+:nth-child(n+4)é€‰å–å¤§äºç­‰äº4æ ‡ç­¾
+:nth-child(-n+4)é€‰å–å°äºç­‰äº4æ ‡ç­¾
+:last-childé€‰å–æœ€åä¸€ä¸ªæ ‡ç­¾
+:nth-child(2n-1)é€‰å–å¥‡æ•°æ ‡ç­¾ï¼Œ2n-1å¯ä»¥æ˜¯odd
+:nth-child(2n)é€‰å–å¶æ•°æ ‡ç­¾ï¼Œ2nä¹Ÿå¯ä»¥æ˜¯even
 
-border-style:   solid ±íÊ¾Ö±Ïß   /    dashed  ±íÊ¾ĞéÏß
+border-style:   solid è¡¨ç¤ºç›´çº¿   /    dashed  è¡¨ç¤ºè™šçº¿
