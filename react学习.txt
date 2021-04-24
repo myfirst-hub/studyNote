@@ -125,3 +125,12 @@ shouldComponentUpdate()来判断该组件是否需要进行diff算法分析，但是如果调用了force
 对于同一层级的一组子节点，它们可以通过唯一 id 进行区分。（element diff）（对于简单列表页渲染来说，不加key要比加了key的性能更好）
 当节点处于同一层级时，diff 提供了 3 种节点操作，分别为 INSERT_MARKUP (插入)、MOVE_EXISTING (移动)和 REMOVE_NODE (删除)
 
+
+在 React 中，将多个组件中需要共享的 state 向上移动到它们的最近共同父组件中，便可实现共享 state。这就是所谓的“状态提升”
+
+Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。（ReactDOM.createPortal(child, container))
+
+React.forwardRef 会创建一个React组件，这个组件能够将其接受的 ref 属性转发到其组件树下的另一个组件中
+
+React.Fragment 组件能够在不额外创建 DOM 元素的情况下，让 render() 方法中返回多个元素。
+
