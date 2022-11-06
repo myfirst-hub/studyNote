@@ -1,0 +1,9 @@
+上传流程：
+1. 通过接口获取token，name，host，url或者直接写死
+
+2. 把附件通过upload（上传组件）的action上传到服务器（七牛）
+
+3. 通过file参数展示附件
+
+示例组件
+qualityapp/components/upload2

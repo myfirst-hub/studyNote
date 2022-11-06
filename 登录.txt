@@ -1,0 +1,7 @@
+1. 通过login接口登录，
+2. cookie获取taken值，每次在调用接口，后端跟根据token做判断
+3. 调用退出登录接口，销毁cookie中的token值
+4. 其他所有接口：前端request根据后端返回code值判断（若401）跳转登录页
+
+示例组件
+mainapp/src/login
